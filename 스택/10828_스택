@@ -1,0 +1,22 @@
+import sys 
+input=sys.stdin.readline # 이걸 넣어야지 런타임 에러 없음 
+
+n=int(input())
+stack=[]
+for i in range(n):
+    command = list(input().split())
+    a=command[0]
+    b=command[-1]
+    if a=='push':
+        stack.append(int(b))
+    elif a=='pop':
+        if stack==[]: print(-1)
+        else: print(stack.pop())
+    elif a=='size':
+        print(len(stack))
+    elif a=='empty':
+        if stack==[]: print(1)
+        else: print(0)
+    else:
+        if stack==[]: print(-1)
+        else: print(stack[-1])
