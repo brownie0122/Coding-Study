@@ -1,0 +1,11 @@
+import sys
+
+n = int(sys.stdin.readline())
+numbers=[int(s) for s in sys.stdin.readline().strip().split()]
+partial_sum=[numbers[0]]
+
+for i in range(n-1):
+    partial_sum.append(max(partial_sum[i]+numbers[i+1], numbers[i+1]))
+
+
+print(max(partial_sum))
