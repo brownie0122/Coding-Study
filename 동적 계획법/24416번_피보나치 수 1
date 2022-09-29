@@ -1,0 +1,20 @@
+import sys
+n=int(sys.stdin.readline())
+a=0
+b=0
+
+def fib(n):
+    a+=1
+    if n == 1 or n == 2:
+        return 1;  # 코드1
+    else: return (fib(n - 1) + fib(n - 2))
+
+def fibonacci(n):
+    f=[0]*n
+    f[1]=1
+    f[2]=1
+    for i in range(3,n):
+        f[i] = f[i - 1] + f[i - 2]  # 코드2
+    return f[n]
+    
+#pypy3으로 제출하였음 
