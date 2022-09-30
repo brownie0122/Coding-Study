@@ -1,0 +1,12 @@
+n=int(input())
+cost_t=[0,0,0]
+for i in range(n):
+    cost=list(map(int, input().split()))
+    r=min(cost[0]+cost_t[1],cost[0]+cost_t[2])
+    g=min(cost[1]+cost_t[0],cost[1]+cost_t[2])
+    b=min(cost[2]+cost_t[0],cost[2]+cost_t[1])
+    cost_t[0]=r
+    cost_t[1]=g
+    cost_t[2]=b
+
+print(min(cost_t))
