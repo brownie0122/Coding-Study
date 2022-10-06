@@ -1,0 +1,35 @@
+#1463. 1로 만들기
+
+memo=[0]*10000001
+
+n=int(input())
+if memo[n]:
+    print(memo[n])
+else:
+    a=[]
+    a.append(n)
+    m=n
+    cnt=0
+    print(m)
+    while m!=1:
+        if m%3==0:
+            m=m//3
+        elif m%2==0:
+            m=m//2
+        else:
+            m=m-1
+        cnt+=1
+        print(m)
+        a.append(m)
+    
+    print(a)
+
+    for i in range(len(a)):
+        memo[a[i]]=cnt
+        cnt-=1
+    
+    print(n)
+    print(memo[n])
+
+#3번만에 만들어지지 않음,
+#4번 사용됨 -> 오류 고치기 
