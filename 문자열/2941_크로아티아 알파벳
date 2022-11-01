@@ -1,0 +1,21 @@
+dic=['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+text=input()
+wordlist=[]
+cnt=0
+
+for word in dic:
+  if text.find(word)!=-1:
+    wordlist.append(word)
+    if word=='dz=':
+      pass
+    else: cnt+=text.count(word)
+#print(wordlist)
+
+for word in wordlist:
+  text=text.replace(word, ' ')
+
+text=text.replace(' ','')
+#print(text)
+
+cnt+=len(text)
+print(cnt)
