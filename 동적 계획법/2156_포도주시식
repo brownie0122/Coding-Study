@@ -1,0 +1,19 @@
+n=int(input())
+a=[0]*n
+f=[0]*n
+for i in range(n):
+  a[i]=int(input())
+  if i==0:
+    f[i]=a[i]
+  elif i==1:
+    f[i]=a[i]+a[i-1]
+  elif i==2:
+    f[i]=max(f[i-2]+a[i], a[i]+a[i-1], f[1])
+  else:
+    f[i]=max(f[i-3]+a[i-1]+a[i], f[i-2]+a[i])
+    f[i]=max(f[i-1], f[i])
+
+  
+#print(a)
+#print(f)
+print(f[n-1])
