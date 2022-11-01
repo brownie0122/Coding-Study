@@ -1,0 +1,20 @@
+n=int(input())
+cnt=0
+
+for i in range(n):
+  string=input()
+  group_word=True
+  char_list=[]
+  char_list.append(string[0])
+  for j in range(1, len(string)):
+    if string[j] not in char_list:
+      char_list.append(string[j])
+    else:
+      if string[j]==string[j-1]:
+        pass
+      else:
+        group_word=False
+        break  
+  if group_word: cnt+=1 
+
+print(cnt)
