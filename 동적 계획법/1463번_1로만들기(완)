@@ -33,3 +33,16 @@ else:
 
 #3번만에 만들어지지 않음,
 #4번 사용됨 -> 오류 고치기 
+
+n=int(input()) #인풋 숫자 (인풋은 한개)
+
+memo=[0]*(n+1) #메모이제이션 행렬 
+memo[1]=0
+for i in range(2, n+1):
+  memo[i]=1 + memo[i-1]
+  if i%3==0:
+    memo[i]=min(memo[i//3]+1, memo[i]) #3으로 나눠질 때 -> 최솟값 체크 
+  if i%2==0:
+    memo[i]=min(memo[i//2]+1, memo[i]) #2으로 나눠질 때 -> 최솟값 체크  
+
+print(memo[n])
