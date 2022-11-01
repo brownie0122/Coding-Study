@@ -1,0 +1,8 @@
+n=int(input())
+a=list(map(int, input().split()))
+lis_length=[1]*n
+for i in range(n):
+  for j in range(i):
+    if a[j]<a[i]:
+      lis_length[i]=max(lis_length[i], lis_length[j]+1)
+print(max(lis_length))
