@@ -1,0 +1,19 @@
+n=int(input())
+a=list(map(int, input().split()))
+
+lis_1=[1]*n
+lis_2=[1]*n
+
+#sol1. 증가하는 부분수열 세는 걸 앞으로 + 뒤로 해서 더하기 
+for i in range(n):
+  for j in range(i):
+    if a[j]<a[i]:
+      lis_1[i]=max(lis_1[i], lis_1[j]+1)
+    if a[n-j-1]<a[n-i-1]:
+      lis_2[n-i-1]=max(lis_2[n-i-1], lis_2[n-j-1]+1)
+  #print(lis_2)
+
+
+print(max([sum(x) for x in zip(lis_1,lis_2)])-1)
+
+#맞았습니다 
