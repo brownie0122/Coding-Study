@@ -1,0 +1,53 @@
+#24060. 알고리즘 수업 - 병합 정렬 1 
+
+def merge_sort(num_arr, p, r, k_list):
+  if p<r:
+    q=(p+r)//2
+    num_arr, k_list=merge_sort(num_arr, p, q, k_list)
+    num_arr, k_list=merge_sort(num_arr, q+1, r, k_list)
+    num_arr, k_list=merge(num_arr, p, q, r, k_list)
+    #print(num_arr)
+    return num_arr, k_list
+  else:
+    return num_arr, k_list
+
+def merge(num_arr, p, q, r, k_list):
+  #print(p, q, r)
+  i=p
+  j=q+1
+  t=0
+  tmp=[]
+  while i<=q and j<=r:
+    if num_arr[i]<=num_arr[j]:
+      tmp.append(num_arr[i])
+      i+=1
+    else:
+      tmp.append(num_arr[j])
+      j+=1
+  while i<=q:
+    tmp.append(num_arr[i])
+    i+=1
+  while j<=r:
+    tmp.append(num_arr[j])
+    j+=1
+  i=p
+  while i<=r:
+    num_arr[i]=tmp[t]
+    k_list.append(num_arr[i])
+    i+=1
+    t+=1
+  return num_arr, k_list
+
+n, k=map(int, input().split())
+num_arr=list(map(int, input().split()))
+k_list=[]
+
+#print(num_arr)
+
+num_arr, k_list=merge_sort(num_arr, 0, len(num_arr)-1, k_list)
+#print(num_arr)
+#print(k_list)
+if len(k_list)<k:
+  print(-1)
+else:
+  print(k_list[k-1])
