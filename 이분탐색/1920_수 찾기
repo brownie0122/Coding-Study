@@ -1,0 +1,21 @@
+n=int(input())
+num_list=sorted(list(map(int, input().split())))
+#print(num_list)
+m = int(input())
+num_test=list(map(int, input().split()))
+#print(num_test)
+for i in range(m):
+  x=num_test[i]
+  low=0
+  high=n-1
+  while low<=high:
+    mid=(low+high)//2
+    if x>num_list[mid]: 
+      low=mid+1 
+    elif x<num_list[mid]: 
+      high=mid-1
+    else: 
+      print(1)
+      break
+  if low>high:
+    print(0)
