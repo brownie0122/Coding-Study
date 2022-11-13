@@ -1,0 +1,27 @@
+#2447. 별 찍기-10
+
+star1=[['*','*','*'],['*',' ','*'],['*','*','*']]
+
+def stars(n):
+  if n==3:
+    return star1
+  star_arr=[[' ' for a in range(n)] for b in range(n)]
+  ss=stars(n//3)
+  x=n//3
+  for i in range(3):
+    for j in range(3):
+      if i==1 and j==1: pass
+      else: 
+        for k in range(n//3):
+          star_arr[x*i+k][x*j:x*(j+1)]=ss[k]
+  return star_arr
+
+n=int(input())
+star_arr=stars(n)
+
+for i in range(n):
+  for j in range(n):
+    print(star_arr[i][j], sep='', end='')
+  print()
+ 
+#재귀함수 내에서 한번만 호출할 것 
