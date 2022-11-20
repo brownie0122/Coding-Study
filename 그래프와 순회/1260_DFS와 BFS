@@ -1,0 +1,39 @@
+#1260. DFS 와 BFS
+n, m, v=map(int, input().split())
+array=[[0 for i in range(n+1)] for j in range(n+1)]
+for k in range(m):
+  i, j=map(int, input().split())
+  array[i][j]=1
+  array[j][i]=1
+
+bfs_list=[]
+dfs_list=[]
+
+def dfs(v, arr):
+    visited[v]=1
+    dfs_list.append(v)
+    for j in range(1, n+1):
+      if arr[v][j] and visited[j]==0:
+        dfs(j, arr)
+
+def bfs(v, arr):
+    queue=[]
+    visited[v]=1
+    bfs_list.append(v)
+    queue.append(v)
+
+    while queue!=[]:
+      v=queue.pop(0)
+      for j in range(1, n+1):
+        if arr[v][j] and visited[j]==0:
+          visited[j]=1
+          bfs_list.append(j)
+
+          queue.append(j)
+        
+visited=[0]*(n+1)
+dfs(v, array)
+visited=[0]*(n+1)
+bfs(v, array)
+print(' '.join(map(str, dfs_list)))
+print(' '.join(map(str, bfs_list)))
