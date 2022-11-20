@@ -1,0 +1,9 @@
+import math
+
+t=int(input())
+for i in range(t):
+    h, w, n=map(int, input().split())
+    b=math.ceil(n/h)
+    a=n%h
+    if not a: a=h
+    print(100*a+b)
