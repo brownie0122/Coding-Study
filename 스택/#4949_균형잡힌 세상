@@ -1,0 +1,25 @@
+#4949. 균형잡힌 세상
+
+
+while True:
+    string_line=input()
+    if string_line=='.':
+        break
+    
+    stack=[]
+    for j in range(len(string_line)):
+        if string_line[j] in ['(', ')', '[', ']']:
+            if stack==[]:
+                stack.append(string_line[j])
+            else:
+                if stack[-1]=='(' and string_line[j]==')':
+                    stack.pop()
+                elif stack[-1]=='[' and string_line[j]==']':
+                    stack.pop()
+                else:
+                    stack.append(string_line[j])
+
+    if stack==[]:
+        print("yes")
+    else:
+        print("no")
