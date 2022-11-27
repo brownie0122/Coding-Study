@@ -1,0 +1,20 @@
+#9012. 괄호
+
+t=int(input())
+
+for i in range(t):
+    vps=input()
+    stack=[]
+    for j in range(len(vps)):
+        if stack==[]:
+            stack.append(vps[j])
+        else:
+            if stack[-1]=='(' and vps[j]==')':
+                stack.pop()
+            else:
+                stack.append(vps[j])
+
+    if stack==[]:
+        print("YES")
+    else:
+        print("NO")
