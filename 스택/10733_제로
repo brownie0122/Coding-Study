@@ -1,0 +1,15 @@
+#10773. 제로
+
+k=int(input())
+stack=[]
+sum=0
+
+for i in range(k):
+    n=int(input())
+    if n:
+        stack.append(n)
+        sum+=n
+    else:
+        sum=sum-stack.pop()
+
+print(sum)
