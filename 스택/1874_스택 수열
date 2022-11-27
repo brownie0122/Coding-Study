@@ -1,0 +1,35 @@
+#1874. 스택 수열
+
+n=int(input())
+sequence=[0]
+stack=[]
+operations=[]
+num=1
+
+for i in range(n):
+    k=int(input())  #숫자 
+
+    if k>sequence[-1]:
+        while num<=k:
+            stack.append(num)
+            num+=1
+            operations.append('+')
+        
+        sequence.append(k)
+        stack.pop() 
+        operations.append('-')
+
+    else: #k가 더 작을 때 
+        if stack[-1]!=k:
+            print("NO")
+            break
+        else:
+            sequence.append(k)
+            stack.pop() 
+            operations.append('-')
+
+    #print(stack)
+
+if stack==[]:  
+    for op in operations:
+        print(op)
