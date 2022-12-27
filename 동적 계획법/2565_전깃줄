@@ -1,0 +1,21 @@
+#2565.전깃줄 (12/21 수)
+
+n=int(input())
+a=[0]*n
+
+for i in range(n):
+  a[i]=tuple(map(int, input().split()))
+
+a.sort()
+b=[0]*n
+
+for i in range(n):
+  b[i]=a[i][1]
+
+list_length=[1]*n
+for i in range(n):
+  for j in range(i):
+    if b[j]<b[i]:
+      list_length[i]=max(list_length[i], list_length[j]+1)
+
+print(n-max(list_length)) 
