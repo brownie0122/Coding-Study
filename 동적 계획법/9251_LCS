@@ -1,0 +1,20 @@
+#9251. LCS (Longest Common Subsequence)
+string_1=input()
+string_2=input()
+
+m=len(string_1)
+n=len(string_2)
+
+#important point : behavior of 2D python list 
+LCS_length=[[0 for i in range(n+1)] for j in range(m+1)]
+
+for i in range(1, m+1):
+  for j in range(1, n+1):
+
+    if string_1[i-1] == string_2[j-1]:
+      LCS_length[i][j] = 1 + LCS_length[i-1][j-1]
+    else:
+      LCS_length[i][j] = max(LCS_length[i][j-1], LCS_length[i-1][j])
+
+print(LCS_length[m][n])
+  
