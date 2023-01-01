@@ -1,0 +1,67 @@
+#10026. 적록색약
+import sys
+input = sys.stdin.readline
+n = int(input())
+
+#2차원 배열 만들기 
+color_graph=[[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    color_l=input()
+    for j in range(n):
+        color_graph[i][j]=color_l[j]
+
+#print(color_graph)
+
+#적록색약
+color_graph2=[[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    for j in range(n):
+        if color_graph[i][j]=='G':
+            color_graph2[i][j]='R'
+        else:
+            color_graph2[i][j]=color_graph[i][j]
+
+visited=[[0 for i in range(n)] for j in range(n)]
+region_num=0
+
+#이동 좌표
+move=[(1,0),(-1,0),(0,1), (0,-1)]
+
+#깊이 우선 탐색 
+def bfs(v, color_graph): #v는 시작 좌표
+    queue=[]
+    queue.append(v) #큐에 노드 올리기 
+
+    while queue!=[]:
+      v=queue.pop(0) #FIFO 
+      x=v[0]
+      y=v[1]
+
+      for j in range(len(move)):
+          dx=move[j][0]
+          dy=move[j][1]
+          boundary=range(n)
+          if x+dx in boundary and y+dy in boundary:
+              if color_graph[x][y]==color_graph[x+dx][y+dy] and visited[x+dx][y+dy]==0:
+                visited[x+dx][y+dy]=1 
+                queue.append((x+dx,y+dy))
+                #print(queue)
+        
+
+#모든 좌표에 대해 bfs, 이미 방문했다면 넘기기
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==0:
+            bfs((i, j), color_graph)
+            region_num+=1
+
+#리셋 후 적록색약에 대해 반복
+visited=[[0 for i in range(n)] for j in range(n)]
+region_num2=0
+for i in range(n):
+    for j in range(n):
+        if visited[i][j]==0:
+            bfs((i, j), color_graph2)
+            region_num2+=1
+
+print(region_num, region_num2, sep=' ')
