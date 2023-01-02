@@ -1,0 +1,29 @@
+#24480. 알고리즘 수업_ 깊이 우선 탐색 2
+
+n, m, r=map(int, input().split())
+graph=[[] for _ in range(n+1)]
+for i in range(m):
+  u, v= map(int, input().split())
+  graph[u].append(v)
+  graph[v].append(u)
+
+for i in range(1, n+1):
+  graph[i].sort(reverse=True)
+
+visited=[False for _ in range(n+1)]
+visit_order=[0 for _ in range(n+1)]
+cnt=1
+
+def dfs(r):
+  global cnt 
+  visited[r]=True
+  visit_order[r]=cnt
+  cnt+=1
+  for v in graph[r]:
+    if not visited[v]:
+      dfs(v)
+
+  
+dfs(r)
+for v in range(1, n+1):
+  print(visit_order[v])
