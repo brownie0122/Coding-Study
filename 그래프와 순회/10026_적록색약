@@ -27,7 +27,7 @@ region_num=0
 #이동 좌표
 move=[(1,0),(-1,0),(0,1), (0,-1)]
 
-#깊이 우선 탐색 
+#너비 우선 탐색 
 def bfs(v, color_graph): #v는 시작 좌표
     queue=[]
     queue.append(v) #큐에 노드 올리기 
