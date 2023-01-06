@@ -1,0 +1,17 @@
+#01/04(수) 11047. 동전 0 
+n, k=map(int, input().split())
+coin_val=[]
+for i in range(n):
+  val=int(input())
+  if val<=k: coin_val.append(val)
+
+coin_min=0
+for j in range(1, len(coin_val)+1):
+  coin_j=coin_val[-j]
+  coin_min+=(k//coin_j)
+  k=k%coin_j
+  if k==0:
+    break
+
+print(coin_min)
+
