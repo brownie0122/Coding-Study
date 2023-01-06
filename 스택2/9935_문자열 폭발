@@ -1,0 +1,51 @@
+class Stack:
+  def __init__(self):
+    self.stack=[]
+
+  def push(self, char):
+    self.stack.append(char)
+
+  def pop(self):
+    if not self.empty():
+      self.stack.pop(-1)
+    else:
+      return None
+  
+  def top(self):
+    if not self.empty():
+      return self.stack[-1]
+    else:
+      return None
+
+  def empty(self):
+    if self.stack==[]:
+      return True
+    else:
+      return False
+  
+  def len(self):
+    return len(self.stack)
+
+  def print(self):
+    if not self.empty():
+      print(''.join(map(str, self.stack)))
+    else:
+      print("FRULA")
+      
+string1=input()
+bomb=input()
+l_s=len(string1)
+l=len(bomb)
+
+st=Stack()
+
+for char in string1:
+  st.push(char)
+  if char==bomb[-1]: 
+    if ''.join(st.stack[-l:])==bomb:
+      for i in range(l):
+        st.pop()
+
+st.print()
+
+      
