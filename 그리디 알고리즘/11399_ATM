@@ -1,0 +1,13 @@
+#01/06(금)
+#11399: ATM
+
+n=int(input()) #사람 수
+a=list(map(int, input().split())) #기다리는 시간
+a.sort() #짧은 순서대로 정렬
+
+waiting_t=0
+for i in range(n):
+  waiting_t+=a[i]*(n-i) 
+
+print(waiting_t)
+
