@@ -1,0 +1,24 @@
+#01/05(목)
+#1931. 회의실 배정
+n=int(input()) #회의의 수
+start_stop=[]
+for i in range(n):
+  a, b=map(int, input().split())
+  start_stop.append((a,b)) #시작시간과 끝나는 시간 
+
+start_stop.sort(key=lambda x: x[0]) #시작 시간 빠른 순 정렬
+start_stop.sort(key=lambda x: x[1]) #끝나는 시간 빠른 순 정렬
+print(start_stop)
+
+meetings=[]
+
+j=0 #미팅 순서대로 확인 
+t=0 #각 회의가 끝나는 시간 
+while j<n:
+  if start_stop[j][0]>=t: #이전 회의 끝나는 시간보다 시작 시간이 늦으면 
+    meetings.append(start_stop[j])
+    t=start_stop[j][1]
+  j+=1
+
+#print(meetings)
+print(len(meetings))
